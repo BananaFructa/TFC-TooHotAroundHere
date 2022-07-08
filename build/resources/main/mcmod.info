@@ -1,0 +1,16 @@
+[
+{
+  "modid": "thah",
+  "name": "TFC TooHotAroundHere",
+  "description": "An addon for TFC which promps the player, upon entering a world to choose the climate they want to start in.",
+  "version": "1.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["BananaFructa"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
