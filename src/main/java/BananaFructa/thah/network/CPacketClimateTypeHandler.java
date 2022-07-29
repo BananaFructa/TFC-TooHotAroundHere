@@ -24,12 +24,15 @@ public class CPacketClimateTypeHandler implements IMessageHandler<CPacketClimate
             public void run() {
                 try {
                     if (Thah.proxy.thahWorldStorage.oldPlayers.contains(message.uuid)) return;
-                    int z = Climates.values()[message.type].z;
-                    if (z == 0) return; // no need to teleport the player as it already there
-
                     MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
                     EntityPlayer player = server.getEntityWorld().getPlayerEntityByUUID(message.uuid);
                     if (player == null) return;
+                    int z = Climates.values()[message.type].z;
+                    if (z == 0) {
+                        Thah.proxy.thahWorldStorage.addPlayer(player);
+                        return; // no need to teleport the player as it already there
+                    }
+
                     WorldServer worldIn = server.getWorld(0); // the player will always first telemport in the overworld
                     BlockPos finalPosition = null;
                     boolean found = false;
