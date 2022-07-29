@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: TFC TooHotAroundHere
-Implementation-Version: 1.1
-Specification-Vendor: examplemodsareus
-Specification-Title: examplemod
-Implementation-Timestamp: 2022-07-23T16:41:28+0300
-Specification-Version: 1
-Implementation-Vendor: examplemodsareus
-
