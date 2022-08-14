@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class ClimateScreenButton extends GuiButton {
 
-    Climates climate;
+    public Climates climate;
 
     public ClimateScreenButton(int buttonId, int x, int y, int widthIn, int heightIn, Climates climate) {
         super(buttonId, x, y,widthIn,heightIn, climate.name.substring(0,1).toUpperCase() + climate.name.substring(1));
