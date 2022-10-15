@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 public class CPacketClimateType implements IMessage {
-
+    // TODO: fix security vulnerability
     public int type;
     public UUID uuid;
 
