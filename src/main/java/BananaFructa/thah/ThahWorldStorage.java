@@ -1,5 +1,7 @@
 package BananaFructa.thah;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -42,11 +44,9 @@ public class ThahWorldStorage  extends WorldSavedData {
     public void readFromNBT(NBTTagCompound nbt) {
         if (!nbt.hasKey("oldPlayers")) return;
 
-        ByteArrayInputStream bytearr_pl = new ByteArrayInputStream(nbt.getByteArray("oldPlayers"));
-
+        Gson gson = new Gson();
         try {
-            ObjectInputStream in_pl = new ObjectInputStream(bytearr_pl);
-            oldPlayers = (List<UUID>)in_pl.readObject();
+            oldPlayers = gson.fromJson(nbt.getString("oldPlayers"),new TypeToken<List<UUID>>(){}.getType());
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -57,13 +57,10 @@ public class ThahWorldStorage  extends WorldSavedData {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         if (oldPlayers.isEmpty()) return compound;
 
-        ByteArrayOutputStream outarr_pl = new ByteArrayOutputStream();
+        Gson gson = new Gson();
 
         try {
-
-            ObjectOutputStream out_pl = new ObjectOutputStream(outarr_pl);
-            out_pl.writeObject(oldPlayers);
-            compound.setByteArray("oldPlayers",outarr_pl.toByteArray());
+            compound.setString("oldPlayers",gson.toJson(oldPlayers));
 
         } catch (Exception exception) {
             exception.printStackTrace();
